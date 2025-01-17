@@ -15,4 +15,4 @@ Before running the app, ensure you have the following installed on your machine:
 
 - Ruby (version 2.x or later)
 - Rails (version 6.x or later)
-- Po
+- PostgreSQL (or your preferred database)
