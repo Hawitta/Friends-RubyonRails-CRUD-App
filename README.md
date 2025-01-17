@@ -1,25 +1,18 @@
+# Friends CRUD App
 
-# README
+A simple Ruby on Rails application that allows users to manage their list of friends with basic CRUD (Create, Read, Update, Delete) functionality.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Features
 
-Things you may want to cover:
+- **Create a Friend**: Users can add new friends to their list.
+- **View Friends**: Users can view a list of all their friends.
+- **Update Friend**: Users can edit details of their friends.
+- **Delete Friend**: Users can delete a friend from their list.
 
-* Ruby version
+## Prerequisites
 
-* System dependencies
+Before running the app, ensure you have the following installed on your machine:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Ruby (version 2.x or later)
+- Rails (version 6.x or later)
+- Po
