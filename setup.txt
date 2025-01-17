@@ -1,0 +1,151 @@
+
+
+
+1. Install dependencies
+
+Ruby needs - Node js - Yarn -Ruby installed to work
+- So start by installing node js
+node js website -> download for windows -> 
+
+- install Yarn
+- install terminal to use
+
+- use git bash to check installs
+            ruby -v
+            rails -v
+
+- install ruby from rubyinstaller(select the bold hyperlink to download)
+- follow installation steps and check version once completed
+
+
+2.  Start project
+
+In your terminal 
+        - rails new <projectname>
+
+3. If setup works no error should be displayed
+
+4. Run server on git terminal
+- rails s
+
+5. Setup webpage
+First close server then run the following command
+
+- rails g controller home index
+- rails g controller <controller> <page> (remember we need controller for every webpage)
+
+Run server again and see /home/index
+
+REMEMBER 
+- Routes are in config -> routes.ruby
+- Check routes for urls from -> ***rails routes*** on terminal. Use _path after the prefix to form route name
+
+CRUD FUNCTIONALITY
+-On terminal we create a table as follows
+
+1. rails g scaffold friends first_name: string last_name:string email:string phone: string 
+
+- Make it a table/schema 
+2. rails db:migrate 
+
+- now use the controller and make changes according to your desire
+
+
+
+AUTHENTICATION
+(https://github.com/heartcombo/devise?tab=readme-ov-file#getting-started)
+1. Install devise
+    rubygems.org
+    - rails generate devise:install *start with this
+    *follow the steps listed when you run that command
+    
+    - gem install devise
+
+2. Configure default url
+    config-> environments -> development
+    add->   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+    for development.rb and production.rb
+
+    - setup views 
+    rails g devise:views
+
+    -setup model
+    rails g devise <MODELNAME>
+
+
+RAILS ASSOCIATIONS:
+- Link relative data to users
+- documentation -> https://guides.rubyonrails.org/association_basics.html
+- types of associations:
+    - belongs_to
+    - has_one
+    - has_many
+    - has_and_belongs_to_many
+
+    1. Go to app -> models -> friends.rb add
+        belongs_to :user
+
+    2. Go to app -> models -> user.rb add
+        has_many :friends
+
+    3. Create new field in friends table for user id, in terminal:
+    
+       - rails g migration add_user_id_to_friends user_id:integer:index
+
+    4. rails db:migrate
+
+    5. Modify form to add friend to current_user
+
+    <div class="form-group mb-3">
+        <%= form.label :phone, style: "display: block" %>
+        <%= form.number_field :user_id, id: :friend_user_id, value: current_user.id, type: :hidden, class:"form-control" %>
+    </div>
+
+    6. Modify controller to allow new input field in form
+    - go to friends_controller, at very bottom(params) 
+        add (:user_id)
+
+    7. limit what user can access when not logged in, methods are listed in the
+    friends controller, we are allowing only index and show method for the non
+    authenticated user
+  
+    - before_action : authenticate_user!, except: [:index, :show]
+
+    8. To show friends according to each user add this to friends_controller.rb
+
+          # GET /friends or /friends.json
+            def index
+                @friends = current_user.friends
+            end
+
+MAILER 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ENV file
+1. Add this to your gem file
+
+    - gem 'dotenv-rails', groups: [:development, :test]
+
+
+2. Run this on the terminal 
+
+    - bundle install
+
+3. Restart server
+
+    - rails s
+
+    

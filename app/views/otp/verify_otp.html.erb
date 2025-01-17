@@ -1,0 +1,10 @@
+<%= form_with url: otp_verify_otp_path, method: :post do |f| %>
+    <div>
+      <%= f.label :otp, "Enter OTP" %>
+      <%= f.text_field :otp, required: true %>
+    </div>
+    <div>
+      <%= f.submit "Verify OTP" %>
+    </div>
+  <% end %>
+  

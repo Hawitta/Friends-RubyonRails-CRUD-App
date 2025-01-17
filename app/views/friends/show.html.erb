@@ -1,0 +1,21 @@
+
+<div class="jumbotron">
+  <h1 class="display-4"><%= @friend.first_name%> <%= @friend.last_name%> </h1>
+  <p class="lead"> <%= @friend.email%> </p>
+
+  <p> <%= @friend.phone %>  </p>
+  <p class="lead">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  </p>
+  <br/>
+  </div>
+
+
+<div>
+  <%= link_to "Edit", edit_friend_path(@friend), class:"btn btn-light" %> |
+  <%= link_to "Back", friends_path, class:"btn btn-dark" %>
+  <br/> <br/>
+  <%= button_to "Delete friend", @friend, method: :delete, class:"btn btn-light" %>
+</div>
+
+
